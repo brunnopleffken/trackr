@@ -1,0 +1,10 @@
+# .NET Core
+[Oo]bj/
+[Bb]in/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+
