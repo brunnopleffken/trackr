@@ -38,7 +38,12 @@ namespace Trackr
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<IdentityUser>(configure =>
+                {
+                    configure.Password.RequireNonAlphanumeric = false;
+                    configure.Password.RequireUppercase = false;
+                    configure.User.RequireUniqueEmail = true;
+                })
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
